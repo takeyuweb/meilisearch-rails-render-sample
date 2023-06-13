@@ -1,0 +1,41 @@
+<h1>Zipcodes#index</h1>
+<p>Find me in app/views/zipcodes/index.html.erb</p>
+
+<%= form_with url: root_path, method: :get, id: "zipcode_search", data: { "turbo-frame": "zipcodes" } do |f| %>
+  <%= f.search_field :query, value: @query, placeholder: '郵便番号か住所で検索', onchange: "submitSearchForm()", onkeyup: "submitSearchForm()" %>
+<% end %>
+
+<%= turbo_frame_tag "zipcodes" do %>
+  <table>
+    <thead>
+      <tr>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>住所（カナ）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @zipcodes.each do |zipcode| %>
+        <tr>
+          <td><%= zipcode.code %></td>
+          <td><%= zipcode.address %></td>
+          <td><%= zipcode.address_kana %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= javascript_tag do %>
+  let searchTimer = null;
+  function submitSearchForm() {
+    if (searchTimer != null) {
+      clearInterval(searchTimer);
+      searchTimer = null;
+    }
+
+    searchTimer = setTimeout(() => {
+      document.querySelector('form#zipcode_search').requestSubmit()
+    }, 100);
+  }
+<% end %>
