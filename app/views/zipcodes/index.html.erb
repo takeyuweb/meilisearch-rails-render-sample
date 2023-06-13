@@ -2,7 +2,7 @@
 <p>Find me in app/views/zipcodes/index.html.erb</p>
 
 <%= form_with url: root_path, method: :get, id: "zipcode_search", data: { "turbo-frame": "zipcodes" } do |f| %>
-  <%= f.search_field :query, value: @query, placeholder: '郵便番号か住所で検索', onchange: "submitSearchForm()", onkeyup: "submitSearchForm()" %>
+  <%= f.search_field :query, value: @query, placeholder: '埼玉県の郵便番号か住所で検索', onchange: "submitSearchForm()", onkeyup: "submitSearchForm()" %>
 <% end %>
 
 <%= turbo_frame_tag "zipcodes" do %>
