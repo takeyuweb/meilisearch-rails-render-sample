@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 1. deploy
 
-Things you may want to cover:
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/takeyuweb/meilisearch-rails-render-sample)
 
-* Ruby version
+<img width="1136" alt="image" src="https://github.com/takeyuweb/meilisearch-rails-render-sample/assets/60980/614f9f04-379c-43ea-9e83-f8158bb6221f">
 
-* System dependencies
+## 2. run rails db:seed
 
-* Configuration
+[shell](https://render.com/docs/deploy-rails#accessing-the-rails-console)
 
-* Database creation
+```
+bundle exec rails db:seed
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<img width="1136" alt="image" src="https://github.com/takeyuweb/meilisearch-rails-render-sample/assets/60980/02ec88f1-9dc6-4d34-8a33-af1bf2f5c4b0">
