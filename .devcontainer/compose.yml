@@ -12,11 +12,12 @@ services:
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
 
-    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:db
+    ports:
+      - 3000:3000
 
-    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
-    # (Adding the "ports" property to this file will not forward from a Codespace.)
+    depends_on:
+      - db
+      - meilisearch
 
   db:
     image: postgres:latest
@@ -41,8 +42,17 @@ services:
       #    password: postgres
       #    database: myapp_development
 
-    # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
-    # (Adding the "ports" property to this file will not forward from a Codespace.)
+  meilisearch:
+    image: getmeili/meilisearch:v1.2.0
+    restart: unless-stopped
+    environment:
+      MEILI_MASTER_KEY: masterKey
+      MEILI_DB_PATH: /data.ms
+    volumes:
+      - meilisearch-data:/data.ms
+    ports:
+      - 7700:7700
 
 volumes:
   postgres-data:
+  meilisearch-data:
