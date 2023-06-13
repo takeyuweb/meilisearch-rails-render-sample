@@ -1,5 +1,7 @@
 # README
 
+https://github.com/takeyuweb/meilisearch-rails-render-sample/assets/60980/017aa3fa-a1b2-444a-9583-eb8f130101fd
+
 ## 1. deploy
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/takeyuweb/meilisearch-rails-render-sample)
