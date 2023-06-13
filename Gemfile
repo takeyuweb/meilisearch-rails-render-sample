@@ -66,3 +66,4 @@ end
 
 gem 'pagy'
 
+gem 'meilisearch-rails'

@@ -4,6 +4,7 @@
 # Customize only what you really need and notice that the core Pagy works also without any of the following lines.
 # Should you just cherry pick part of this file, please maintain the require-order of the extras
 
+require 'pagy/extras/meilisearch'
 
 # Pagy DEFAULT Variables
 # See https://ddnexus.github.io/pagy/docs/api/pagy#variables
