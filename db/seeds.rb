@@ -13,29 +13,36 @@ def han2zen(str)
   NKF::nkf('-WwXm0', str)
 end
 
-now = Time.current
-zipcodes = []
+if Zipcode.count.zero?
+  now = Time.current
+  zipcodes = []
 
-CSV.foreach(Rails.root.join("db/x-ken-all.csv").to_s, encoding: Encoding::SJIS) do |row|
-  code = row[2]
-  prefecture_kana = han2zen(row[3])
-  city_kana = han2zen(row[4])
-  neighborhood_kana = han2zen(row[5])
-  prefecture = row[6]
-  city = row[7]
-  neighborhood = row[8]
+  CSV.foreach(Rails.root.join("db/x-ken-all.csv").to_s, encoding: Encoding::SJIS) do |row|
+    code = row[2]
+    prefecture_kana = han2zen(row[3])
+    city_kana = han2zen(row[4])
+    neighborhood_kana = han2zen(row[5])
+    prefecture = row[6]
+    city = row[7]
+    neighborhood = row[8]
 
-  zipcodes.push({
-    code:,
-    prefecture:,
-    city:,
-    neighborhood:,
-    prefecture_kana:,
-    city_kana:,
-    neighborhood_kana:,
-    created_at: now,
-    updated_at: now
-  })
+    zipcodes.push({
+      code:,
+      prefecture:,
+      city:,
+      neighborhood:,
+      prefecture_kana:,
+      city_kana:,
+      neighborhood_kana:,
+      created_at: now,
+      updated_at: now
+    })
+    if zipcodes.length == 100
+      Zipcode.insert_all!(zipcodes)
+      zipcodes.clear
+    end
+  end
+
+  Zipcode.insert_all(zipcodes) if zipcodes.any?
+  Zipcode.reindex!
 end
-
-Zipcode.upsert_all(zipcodes)

@@ -85,6 +85,4 @@ test:
 #
 production:
   <<: *default
-  database: meilisearch_rails_render_sample_production
-  username: meilisearch_rails_render_sample
-  password: <%= ENV["MEILISEARCH_RAILS_RENDER_SAMPLE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

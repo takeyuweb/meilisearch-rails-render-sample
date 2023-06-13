@@ -43,7 +43,9 @@ services:
       #    database: myapp_development
 
   meilisearch:
-    image: getmeili/meilisearch:v1.2.0
+    build:
+      context: ../docker/meilisearch
+      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       MEILI_MASTER_KEY: masterKey
